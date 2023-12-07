@@ -31,10 +31,10 @@ String test = request.getParameter("test");
 취미:<%=hobby %><br>
 년도:<%=year %><br>
 test:<%=test %><br>
-
+<p>request.getParameterValues("hobby")</p>
 <%
 String[] hobbies = request.getParameterValues("hobby");
-for(String h: hobbies) {%>
+for(String h: hobbies) {%>   
 	<%=h %>,
 <%} %>
 
@@ -45,10 +45,9 @@ for(String h: hobbies) {%>
 Enumeration e = request.getParameterNames();  //name을 가지고 온다.
      while(e.hasMoreElements()) {
      String paramName = (String)e.nextElement(); //파라미터 이름
-     String[] paramValues = request.getParameterValues(paramName);
-    	 
-    	 
-%>
+     String[] paramValues = request.getParameterValues(paramName);    	    	 
+%> 
+
 <tr>
 <td><%=paramName %></td>
 <td><%for(String v: paramValues) { %><%=v %>&nbsp;<% } %></td>

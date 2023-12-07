@@ -7,18 +7,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <%
-        int num = Integer.parseInt(request.getParameter("num"));
-        int kind = Integer.parseInt(request.getParameter("kind"));
-        int sum = 0;
+<%
+String kind = request.getParameter("kind");
+int num = Integer.parseInt(request.getParameter("num"));
+int sum = 0;
         
-        for(int i = 1; i <= num; i++) {
-        	if (kind == 0 || 
-        	   (kind == 1 && i % 2 == 1) ||
-        	   (kind == 2 && i % 2 == 0)) 
-        	{   sum += i;
-               
-        }}
+    for(int i = 1; i <= num; i++) {
+    	switch(kind) {
+    	case "0": sum += i; break;
+    	case "1": if(i%2==1) sum+=i; break;
+    	case "2": if(i%2==0) sum+=i; break;
+    	}
+        	}      
 %>
+
+kind:<%=kind %>
+num:<%=num %>
+<h2><%=num %>까지의
+<%=(kind.equals("0")?"전체":(kind.equals("1")?"홀수":"짝수")) %>
+<%=sum %></h2>
 </body>
 </html>
