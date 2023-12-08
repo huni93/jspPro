@@ -13,7 +13,7 @@
  Cookie cookie = new Cookie(cookieName, "hongkd"); //map.put("id","hongkd");
  cookie.setMaxAge(60*2); //2분
  //cookie.setValue("kimid");
-// cookie.setValue(URLEncoder.encode("홍아이디","utf-8"));
+ //cookie.setValue(URLEncoder.encode("홍아이디","utf-8"));
  response.addCookie(cookie); //server --->client
 %>
 <body>
