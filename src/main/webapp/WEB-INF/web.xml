@@ -9,4 +9,38 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+    <context-param>
+  <description>sample1</description>
+  <param-name>pname</param-name>
+  <param-value>1012</param-value>
+  </context-param>
+  <context-param>
+   <description>sample2</description>
+  <param-name>debug</param-name>
+  <param-value>true</param-value>
+  </context-param>
+  
+  <!-- <error-page>
+  <error-code>404</error-code>
+  <location>/chap05/error/error404.jsp</location>
+  </error-page>
+  
+  <error-page>
+  <error-code>500</error-code>
+  <location>/chap05/error/error500.jsp</location>
+  </error-page>
+  
+  <error-page> type 이 우선순이 1
+  <exception-type>java.lang.NumberFormatException</exception-type>
+  <location>/chap05/error/errorNumberFormat.jsp</location>
+  </error-page> -->
+
+  
+  
+  
+  
+  
+  
+  
 </web-app>

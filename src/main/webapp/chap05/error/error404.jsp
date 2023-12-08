@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>application 객체 예제</title>
+<title>Insert title here</title>
 </head>
 <body>
-
+404 error 입니다.
 </body>
 </html>
