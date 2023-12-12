@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,4 +46,26 @@ public int insertMember(KicMember kicmem) throws UnsupportedEncodingException, S
          return num;
                   
    }
+ 
+          public KicMember oneMember(String id) throws SQLException {
+        	  
+   Connection conn = getConnection();             
+   PreparedStatement pstmt = conn.prepareStatement("select*from kicmember where id =?");
+   pstmt.setString(1,id);
+   ResultSet rs = pstmt.executeQuery();
+   if(rs.next()) {
+	   
+	   KicMember m = new KicMember();
+	   m.setId(rs.getString("id"));
+	   m.setPass(rs.getString("pass"));
+	   m.setName(rs.getString("name"));
+	   m.setGender(rs.getInt("gender"));
+	   m.setTel(rs.getString("tel"));
+	   m.setEmail(rs.getString("email"));
+	   return m;
+   }
+   return null;
+          }
+
+
 }// class end

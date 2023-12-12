@@ -40,10 +40,18 @@ body {
    <div class="container">
       <div class="input-form-backgroud row">
          <div class="input-form col-md-12 mx-auto">
-            <h4 class="mb-3">회원가입</h4>
-            <form class="validation-form" novalidate      action="memberPro.jsp">
+            <h4 class="mb-3">회원정보수정</h4>
+            <form class="validation-form" novalidate  action="memberPro.jsp" method="post" >
                
-               <div class="row">
+                              <div class="row">
+                  <div class="col-md-3 mb-3">
+                     <label for="id">사진</label> <img src=""  width="100px"  height="120px">
+                     <button   class="btn btn-primary  btn-block">사진업로드</button>
+                  </div>
+                  
+                  <div class="col-md-9 mb-3">
+                  
+                  <div class="row">
                   <div class="col-md-6 mb-3">
                      <label for="id">아이디</label> <input type="text"
                         class="form-control" id="id" placeholder="아이디" value="" required  name="id">
@@ -56,6 +64,8 @@ body {
                      <div class="invalid-feedback">이름을 입력해주세요.</div>
                   </div>
                </div>
+               
+               </div></div>
                
                   <div class="row">
                   <div class="col-md-6 mb-3">
@@ -102,8 +112,8 @@ body {
                
                
             
-               <button class="btn btn-primary btn-lg btn-block" type="submit">가입
-                  완료</button>
+               <button class="btn btn-primary btn-lg btn-block" type="submit">정보수정
+                  </button>
             </form>
          </div>
       </div>
