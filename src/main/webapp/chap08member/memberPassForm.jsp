@@ -35,32 +35,53 @@ body {
 	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
 }
 </style>
+<script>
+function passChk(form) {
+	if(form.chgpass.value !=form.chgpass1.value){
+		alert("변경 비밀번호와 재입력 번호가 다릅니다.")
+		form.chgpass1.value="";
+		form.chgpass1.focus()
+		return false
+	}
+	return true;
+}
+</script>
 </head>
 <body>
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
-				<h4 class="mb-3  center">로그인</h4>
-				<form class="validation-form" novalidate action="loginPro.jsp">
+				<h4 class="mb-3  center">비밀번호변경</h4>
+				<form class="validation-form" novalidate action="memberPassPro.jsp"
+				onsubmit = "return passChk(this)" method="post">
 
 					<div class="row">
-						<div class="col-md-6 mb-3">
-							<label for="id">아이디</label> <input type="text"
-								class="form-control" id="id" placeholder="" value="" required
-								name="id">
-							<div class="invalid-feedback">아이디를 입력해주세요.</div>
-						</div>
-						<div class="col-md-6 mb-3">
-							<label for="pass">비밀번호</label> <input type="password"
+					
+						<div class="col-md-12 mb-3">
+							<label for="pass">현재비밀번호</label> <input type="password"
 								class="form-control" id="pass" placeholder="" value=""
 								name="pass" required>
+							<div class="invalid-feedback">비밀번호을 입력해주세요.</div>
+						</div>
+						
+						<div class="col-md-12 mb-3">
+							<label for="pass">변경비밀번호</label> <input type="password"
+								class="form-control" id="pass" placeholder="" value=""
+								name="chgpass" required>
+							<div class="invalid-feedback">비밀번호을 입력해주세요.</div>
+						</div>
+						
+						<div class="col-md-12 mb-3">
+							<label for="pass">변경번호확인</label> <input type="password"
+								class="form-control" id="pass" placeholder="" value=""
+								name="chgpass1" required>
 							<div class="invalid-feedback">비밀번호을 입력해주세요.</div>
 						</div>
 					</div>
 
 
 					<div class="mb-4"></div>
-					<button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
+					<button class="btn btn-primary btn-lg btn-block" type="submit">비밀번호 변경</button>
 				</form>
 			</div>
 		</div>

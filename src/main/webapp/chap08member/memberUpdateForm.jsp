@@ -1,3 +1,5 @@
+<%@page import="ch08.KicMember"%>
+<%@page import="ch08.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <html lang="ko">
@@ -36,12 +38,17 @@ body {
 }
 </style>
 </head>
+
+<%
+MemberDao md = new MemberDao();
+KicMember mem = md.oneMember(login);
+%>
 <body>
    <div class="container">
       <div class="input-form-backgroud row">
          <div class="input-form col-md-12 mx-auto">
             <h4 class="mb-3">회원정보수정</h4>
-            <form class="validation-form" novalidate  action="memberPro.jsp" method="post" >
+            <form class="validation-form" novalidate  action="memberUpdatePro.jsp" method="post" >
                
                               <div class="row">
                   <div class="col-md-3 mb-3">
@@ -54,64 +61,52 @@ body {
                   <div class="row">
                   <div class="col-md-6 mb-3">
                      <label for="id">아이디</label> <input type="text"
-                        class="form-control" id="id" placeholder="아이디" value="" required  name="id">
+                        class="form-control" id="id" placeholder="아이디" value="<%=mem.getId() %>"
+                         readonly name="id">
                      <div class="invalid-feedback">아이디을 입력해주세요.</div>
                   </div>
                   <div class="col-md-6 mb-3">
                      <label for="name">이름</label> <input type="text"
-                        class="form-control" id="name" placeholder="" value=""   name="name"
+                        class="form-control" id="name" placeholder="" value="<%=mem.getName() %>"   name="name"
                         required>
                      <div class="invalid-feedback">이름을 입력해주세요.</div>
                   </div>
-               </div>
-               
-               </div></div>
-               
+               </div>             
+               </div></div>            
                   <div class="row">
                   <div class="col-md-6 mb-3">
                      <label for="pass">비밀번호</label> <input type="password"
-                        class="form-control" id="pass" placeholder="아이디" value="" required  name="pass">
-                     <div class="invalid-feedback">비밀번호을 입력해주세요.</div>
+                        class="form-control" id="pass" placeholder="비밀번호" value="" required  name="pass">
+                    <div class="invalid-feedback">비밀번호을 입력해주세요.</div> 
                   </div>
-                  <div class="col-md-6 mb-3">
-                     <label for="pass2">비밀번호확인</label> <input type="password"
-                        class="form-control" id="pass2" placeholder="" value=""   name="pass2"
-                        required>
-                     <div class="invalid-feedback">비밀번호확인을 입력해주세요.</div>
-                  </div>
+
                </div>
                
                   <div class="row">
                   <div class="col-md-6 mb-3">
                      <label for="gender">남자</label> <input type="radio"
-                         id="gender"  value="1" required  name="gender">
-                  
+                         id="gender"  value="1" <%=mem.getGender()==1?"checked":" " %> 
+                         name="gender">           
                   </div>
                   <div class="col-md-6 mb-3">
                      <label for="gender">여자</label> <input type="radio"
-                         id="gender" placeholder="" value="2"   name="gender"
-                        required>
-                     
+                         id="gender" placeholder="" value="2" <%=mem.getGender()==2?"checked":" " %>  
+                         name="gender">          
                   </div>
-               </div>
-               
+               </div>      
                <div class="mb-3">
-                  <label for="email">이메일</label> <input type="email"  name="email"
+                  <label for="email">이메일</label> <input type="email" name="email"
                      class="form-control" id="email" placeholder="you@example.com"
-                     required>
-                  <div class="invalid-feedback">이메일을 입력해주세요.</div>
+                     required value="<%=mem.getEmail() %>">
+                  
                </div>
                <div class="mb-3">
                   <label for="tel">전화번호</label> <input type="text"
-                     class="form-control" id="tel" placeholder="전화번호"    name="tel"
-                     required>
-                  <div class="invalid-feedback">전화번호를 입력해주세요.</div>
+                     class="form-control" id="tel" placeholder="전화번호" name="tel"
+                     required value="<%=mem.getTel() %>">
+                  
                </div>   
-               
-               
-               
-               
-            
+                    
                <button class="btn btn-primary btn-lg btn-block" type="submit">정보수정
                   </button>
             </form>

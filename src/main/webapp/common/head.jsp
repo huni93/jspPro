@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
@@ -15,10 +15,10 @@
 
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
   <!-- Brand -->
-  <a class="navbar-brand" href="#"><img src="/jspPro/common/logo.png"  width="60%"></a>
+  <a class="navbar-brand" href="<%=request.getContextPath()%>/chap08member/index.jsp">
+  <img src="/jspPro/common/logo.png"  width="60%"></a>
 <ul class="navbar-nav" style="font-weight:900; font:22px;">
 <%
-
 String login = (String)session.getAttribute("id");
 if(login==null) {
 	
@@ -34,7 +34,7 @@ if(login==null) {
     </li>
     <%}else{ %>
     <li class="nav-item">
-      <a class="nav-link" href="<%=request.getContextPath()%>/chap08member/memberinfo.jsp">회원정보</a>
+      <a class="nav-link" href="<%=request.getContextPath()%>/chap08member/memberinfo.jsp">[<%=login%>]&nbsp;&nbsp;회원정보</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="<%=request.getContextPath()%>/chap08member/logout.jsp">로그아웃</a>

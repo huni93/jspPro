@@ -32,9 +32,9 @@ KicMember mem = md.oneMember(login);
              <a class="btn btn-primary"    
              href="${pageContext.request.contextPath}/chap08member/memberUpdateForm.jsp">회원정보수정</a>
              <a class="btn btn-primary" 
-             href="${pageContext.request.contextPath}/chap08member/memberDelete.jsp">회원탈퇴</a>
+             href="${pageContext.request.contextPath}/chap08member/memberDeleteForm.jsp">회원탈퇴</a>
              <a class="btn btn-primary" 
-             href="${pageContext.request.contextPath}/chap08member/memberPassUpdate.jsp">비밀번호수정</a>
+             href="${pageContext.request.contextPath}/chap08member/memberPassForm.jsp">비밀번호수정</a>
            </td>
            </tr>
             </table>
