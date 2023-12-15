@@ -12,12 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import ch08.KicMember;
 import ch08.MemberDao;
+import ch12.CommandHandler;
 
-@WebServlet("/memberinfo")
-public class Model2Servlet extends HttpServlet {
+
+public class Model2Servlet implements CommandHandler {
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public String process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		MemberDao md = new MemberDao();
 		KicMember mem = null;
@@ -29,8 +30,8 @@ public class Model2Servlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		req.setAttribute("mem", mem);
-		RequestDispatcher disp = req.getRequestDispatcher("/chap11_servlet/memberinfo.jsp");
-		disp.forward(req, resp);
+		
+		return "/chap11_servlet/memberinfo.jsp";
 				
 	}
 }

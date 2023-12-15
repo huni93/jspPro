@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -54,19 +55,42 @@ private Map<String, CommandHandler> CommandHandlerMap =
 		}catch(ClassNotFoundException e) {
 			e.printStackTrace();	
 	}}	
+	System.out.println(CommandHandlerMap);	
 		super.init();
-	System.out.println(CommandHandlerMap);
+	
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("doget");
-		super.doGet(req, resp);
+		doProcess(req, resp);
 	}
-	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		doProcess(req, resp);
+	}
+	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		// TODO Auto-generated method stub
+        System.out.println("doProcess");
+        String command = request.getRequestURI(); //전체 url
+        if(command.indexOf(request.getContextPath())==0) { //request.getContextPath()project
+        	command = command.substring(request.getContextPath().length()+1); //length 이후 값
+        }
+        System.out.println(command); //project명 제거
+        
+        CommandHandler handler = CommandHandlerMap.get(command);
+        if(handler == null) {
+        	handler = new NullHandler();
+        }
+        String viewPage=null;
+        try {
+			viewPage = handler.process(request, response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+        dispatcher.forward(request, response);
 	}
 }
